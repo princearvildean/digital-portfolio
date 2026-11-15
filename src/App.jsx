@@ -18,8 +18,8 @@ const projects = [
 
 const skills = {
   frontend: { label: 'Frontend', description: 'Interfaces that feel obvious on the first pass.', items: ['React', 'JavaScript', 'HTML / CSS', 'Tailwind CSS'] },
-  backend: { label: 'Backend', description: 'Practical services with a clear path from request to data.', items: ['PHP', 'Laravel', 'REST APIs', 'PostgreSQL'] },
-  practice: { label: 'Tools + APIs', description: 'The integrations and habits that help a team ship reliably.', items: ['MySQL', 'Git / GitHub', 'Docker / Render', 'Payment + notifications'] },
+  backend: { label: 'Backend', description: 'JavaScript services with a clear path from request to data.', items: ['Express.js', 'Node.js', 'REST APIs', 'PostgreSQL'] },
+  practice: { label: 'Tools + Secondary', description: 'The integrations and secondary skills that help a team ship reliably.', items: ['MySQL', 'Git / GitHub', 'Docker / Render', 'PHP + Laravel'] },
 }
 
 const sections = [
@@ -83,7 +83,7 @@ function App() {
             <div className="hero-copy-wrap"><p className="kicker">COMPUTER SCIENCE STUDENT / CO-DEVELOPER</p><h1>Interfaces for<br /><span>uncertain</span> moments.</h1><p className="hero-lede">I&apos;m Prince Arvildean B. Seguros — an Information Technology student building digital products that are easier to understand, easier to use, and harder to forget.</p><div className="hero-actions"><a className="primary-link" href="#work">View selected work <span>↘</span></a><button className="text-button" onClick={() => jumpTo('about')}>Read the short version <span>→</span></button></div></div>
             <div className="hero-map" aria-label="Interactive portrait card">
               <div className="map-label map-label-top">CURRENT POSITION <strong>01 / 04</strong></div>
-              <div className="photo-orbit"><div className="orbit-ring ring-one" /><div className="orbit-ring ring-two" /><div className="photo-card"><img src="/profile-photo.jpg" alt="Portrait of Prince Arvildean B. Seguros" /><span className="photo-caption">PRINCE / CO-DEVELOPER</span></div><span className="orbit-tag tag-a">REACT</span><span className="orbit-tag tag-b">LARAVEL</span><span className="orbit-tag tag-c">PG</span></div>
+              <div className="photo-orbit"><div className="orbit-ring ring-one" /><div className="orbit-ring ring-two" /><div className="photo-card"><img src="/profile-photo.jpg" alt="Portrait of Prince Arvildean B. Seguros" /><span className="photo-caption">PRINCE / CO-DEVELOPER</span></div><span className="orbit-tag tag-a">REACT</span><span className="orbit-tag tag-b">EXPRESS</span><span className="orbit-tag tag-c">PG</span></div>
               <div className="map-label map-label-bottom">A small system for making<br /><strong>useful things feel human.</strong></div>
             </div>
           </section>
@@ -97,7 +97,7 @@ function App() {
           <section className="contact-section section-pad" id="contact"><div className="contact-card"><div><div className="section-index">04 — CONTACT</div><h2>Have an internship opportunity?</h2><p>I&apos;m looking for a team where I can learn quickly, contribute carefully, and grow through real product work.</p></div><div className="contact-actions"><a className="contact-email" href="mailto:princearvil123@gmail.com">princearvil123@gmail.com <span>↗</span></a><div className="social-links"><a href="https://github.com" target="_blank" rel="noreferrer">GitHub</a><a href="https://linkedin.com" target="_blank" rel="noreferrer">LinkedIn</a></div></div></div></section>
         </main>
 
-        <footer className="site-footer"><span>BUILT WITH INTENTION / REACT + LARAVEL + POSTGRESQL</span><span>© 2026 PRINCE SEGUROS</span></footer>
+        <footer className="site-footer"><span>BUILT WITH INTENTION / REACT + EXPRESS + POSTGRESQL</span><span>© 2026 PRINCE SEGUROS</span></footer>
       </div>
 
       {indexOpen && <div className="index-overlay" role="presentation" onMouseDown={(event) => event.target === event.currentTarget && setIndexOpen(false)}><div className="index-dialog" role="dialog" aria-modal="true" aria-labelledby="index-title"><div className="dialog-top"><span id="index-title">QUICK INDEX</span><button onClick={() => setIndexOpen(false)} aria-label="Close quick index">ESC</button></div><p>Jump to a section. Your keyboard works here too.</p><div className="dialog-links">{sections.map((section) => <button key={section.id} onClick={() => jumpTo(section.id)}><span>{section.index}</span>{section.label}<b>↘</b></button>)}</div></div></div>}
