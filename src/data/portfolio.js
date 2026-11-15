@@ -38,9 +38,9 @@ export const skills = {
 }
 
 export const sections = [
-  { id: 'top', label: 'Start', index: '00' },
-  { id: 'about', label: 'About', index: '01' },
-  { id: 'work', label: 'Work', index: '02' },
-  { id: 'stack', label: 'Stack', index: '03' },
-  { id: 'contact', label: 'Contact', index: '04' },
+  { id: 'top', path: '/', label: 'Start', index: '00' },
+  { id: 'about', path: '/about', label: 'About', index: '01' },
+  { id: 'work', path: '/work', label: 'Work', index: '02' },
+  { id: 'stack', path: '/stack', label: 'Stack', index: '03' },
+  { id: 'contact', path: '/contact', label: 'Contact', index: '04' },
 ]

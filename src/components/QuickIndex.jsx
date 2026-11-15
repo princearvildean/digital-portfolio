@@ -24,7 +24,7 @@ export function QuickIndex({ sections, onJump, onClose }) {
     <div className="index-dialog" ref={dialogRef} role="dialog" aria-modal="true" aria-labelledby="index-title">
       <div className="dialog-top"><span id="index-title">QUICK INDEX</span><button ref={closeRef} onClick={onClose} aria-label="Close quick index">ESC</button></div>
       <p>Jump to a section. Your keyboard works here too.</p>
-      <div className="dialog-links">{sections.map((section) => <button key={section.id} onClick={() => onJump(section.id)}><span>{section.index}</span>{section.label}<b>↘</b></button>)}</div>
+      <div className="dialog-links">{sections.map((section) => <button key={section.id} onClick={() => onJump(section.path)}><span>{section.index}</span>{section.label}<b>↘</b></button>)}</div>
     </div>
   </div>
 }

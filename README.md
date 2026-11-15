@@ -31,6 +31,8 @@ Set `ALLOWED_ORIGIN` to the deployed Render URL. Add the Resend variables to the
 
 If the frontend is deployed as a separate Render Static Site, set its `VITE_API_URL` environment variable to the Web Service URL, for example `https://your-api.onrender.com`. Set `ALLOWED_ORIGIN` on the Web Service to the Static Site URL.
 
+Because the frontend uses React Router, add a Render Static Site rewrite from `/*` to `/index.html`. This keeps direct links such as `/work` and `/contact` working after a refresh.
+
 ## Optional next improvements
 
 - Add repository access details only if a project repository can be made public. The BroBlendz repository is intentionally undisclosed because it is private.
