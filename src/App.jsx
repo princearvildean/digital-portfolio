@@ -13,12 +13,12 @@ function App() {
       <section className="hero page-shell" id="top">
         <div className="availability"><span /> AVAILABLE AFTER GRADUATION · 2026</div>
         <h1>I build <em>useful things</em><br />for the web.</h1>
-        <p className="hero-copy">Hey, I&apos;m <strong>Your Name</strong> — a full-stack developer finishing a Computer Science degree and turning late-night ideas into dependable digital products.</p>
+        <p className="hero-copy">Hey, I&apos;m <strong>Your Name</strong> — a full-stack developer finishing a Bachelor of Science in Information Technology degree and turning late-night ideas into dependable digital products.</p>
       </section>
 
       <section className="profile-band" id="about">
         <div className="profile-grid page-shell">
-          <div className="portrait-frame" aria-label="Profile image placeholder"><div className="portrait-placeholder">YOUR<br />PHOTO</div><span className="sticker">THIS IS ME</span></div>
+          <figure className="portrait-frame" tabIndex="0" aria-label="Profile portrait"><img className="profile-photo" src="/profile-photo.jpg" alt="Portrait of Your Name" /><figcaption className="sticker">THIS IS ME</figcaption></figure>
           <div className="profile-intro"><p className="eyebrow lime">MORE PERSON, LESS PERSONA.</p><h2>Curious by default.<br /><em>Serious about craft.</em></h2></div>
           <div className="profile-details"><p>I like the point where logic meets lived experience: clean data models, fast interfaces, and tiny details that make software feel obvious.</p><p>Away from the screen, I&apos;m usually learning something new, hunting for good coffee, or explaining my latest side project to patient friends.</p></div>
           <div className="fact-grid"><div><span>BASED IN</span><strong>Your City, PH</strong></div><div><span>DEGREE</span><strong>BS Computer Science</strong></div><div><span>LOOKING FOR</span><strong>Junior / Grad roles</strong></div></div>
