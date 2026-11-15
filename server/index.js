@@ -1,6 +1,8 @@
 import 'dotenv/config'
 import express from 'express'
 import pg from 'pg'
+import { dirname, join, resolve } from 'node:path'
+import { fileURLToPath } from 'node:url'
 
 const { Pool } = pg
 const app = express()
@@ -8,6 +10,7 @@ const port = Number(process.env.PORT || 3001)
 const allowedOrigin = process.env.ALLOWED_ORIGIN || 'http://localhost:5173'
 const pool = process.env.DATABASE_URL ? new Pool({ connectionString: process.env.DATABASE_URL, max: 5 }) : null
 const contactAttempts = new Map()
+const distPath = resolve(dirname(fileURLToPath(import.meta.url)), '../dist')
 
 app.use((req, res, next) => {
   if (req.headers.origin === allowedOrigin) res.setHeader('Access-Control-Allow-Origin', allowedOrigin)
@@ -65,7 +68,13 @@ app.use((error, _req, res, next) => {
   return next(error)
 })
 
-const server = app.listen(port, () => console.log(`API listening on http://localhost:${port}`))
+app.use(express.static(distPath))
+app.use((req, res, next) => {
+  if (req.method !== 'GET' || req.path.startsWith('/api')) return next()
+  return res.sendFile(join(distPath, 'index.html'))
+})
+
+const server = app.listen(port, '0.0.0.0', () => console.log(`Portfolio listening on http://localhost:${port}`))
 server.on('error', (error) => { console.error('API server failed to start:', error); process.exitCode = 1 })
 
 const shutdown = async () => { await pool?.end(); server.close(() => process.exit(0)) }

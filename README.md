@@ -24,6 +24,12 @@ npm run server:dev
 
 The API exposes `GET /api/health` and a validated, rate-limited `POST /api/contact` endpoint. If PostgreSQL is not configured, the contact form fails honestly and offers direct email instead of pretending the message was saved.
 
+## Render deployment
+
+This repository can run as one Render Web Service. Use `npm install && npm run build` as the build command and `npm start` as the start command. The Express server serves the built Vite app and the `/api` endpoints from the same origin.
+
+Set `ALLOWED_ORIGIN` to the deployed Render URL. Add `DATABASE_URL` after creating a PostgreSQL database, then run the contact-message migration.
+
 ## Optional next improvements
 
 - Add repository access details only if a project repository can be made public. The BroBlendz repository is intentionally undisclosed because it is private.
