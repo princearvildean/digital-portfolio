@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
 const githubProfile = 'https://github.com/princearvildean'
-const contributionWidget = 'https://contribkit.app/user/princearvildean.svg?palette=onedark&shape=square&background=transparent'
+const contributionWidget = 'https://contribkit.app/user/princearvildean.svg?palette=github&shape=square&background=transparent'
 
 export function GithubActivity() {
   const [failed, setFailed] = useState(false)
