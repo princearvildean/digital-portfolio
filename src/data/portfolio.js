@@ -22,7 +22,7 @@ export const projects = [
     year: '2025-PRESENT',
     title: 'BroBlendz booking system',
     summary: 'A full-stack appointment booking and online payment system with SMS notifications and an administrative portal.',
-    detail: 'Built and deployed with a four-member team. The system supports customer booking workflows, appointment administration, online payments and refunds, plus email and SMS communication. We also used AI-assisted development workflows for exploration, implementation drafts, debugging, and documentation, with human review and validation throughout.',
+    detail: 'Built and deployed as a four-member capstone team. The system supports customer booking workflows, appointment administration, online payments and refunds, plus email and SMS communication. We also used AI-assisted development workflows for exploration, implementation drafts, debugging, and documentation, with human review and validation throughout.',
     metric: 'Deployed full-stack system',
     tags: ['React', 'Tailwind', 'Laravel', 'PostgreSQL', 'Docker', 'Render'],
     accent: 'blue',
