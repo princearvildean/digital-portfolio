@@ -152,6 +152,14 @@ button { border: 0; cursor: pointer; }
 .about-facts div { display: flex; justify-content: space-between; gap: 1rem; border-bottom: 1px solid #485148; padding-bottom: 1.3rem; }
 .about-facts span { color: #a2ada3; }
 .about-facts strong { color: #f2f5e8; font-size: .95rem; font-weight: 500; text-align: right; }
+.github-activity { margin-top: 5rem; }
+.github-activity-heading { display: flex; align-items: end; justify-content: space-between; gap: 2rem; }
+.github-activity-heading h2 { max-width: 32rem; margin-top: 1rem; font-family: 'Host Grotesk', system-ui, sans-serif; font-size: clamp(2.5rem, 5vw, 5rem); line-height: .94; letter-spacing: -.055em; font-weight: 500; }
+.github-activity-frame { margin-top: 2rem; border: 1px solid #485148; background: #0d100f; overflow: hidden; }
+.github-activity-frame > a { display: block; padding: clamp(1rem, 2vw, 1.5rem); }
+.github-activity-frame img { display: block; width: 100%; height: auto; min-height: 9rem; object-fit: contain; }
+.github-activity-fallback { min-height: 9rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1.5rem; color: #f2f5e8; }
+.github-activity-fallback a { border-bottom: 1px solid currentColor; padding-bottom: .3rem; font: .72rem 'JetBrains Mono', monospace; }
 
 .section-heading-row { display: grid; grid-template-columns: 1.15fr .85fr; align-items: end; gap: 3rem; }
 .section-heading-row h1, .section-heading-row h2, .stack-heading h1, .stack-heading h2 { margin-top: 2rem; font-family: 'Host Grotesk', system-ui, sans-serif; font-size: clamp(3.5rem, 7vw, 8rem); line-height: .9; letter-spacing: -.055em; word-spacing: .02em; font-weight: 500; }
@@ -316,6 +324,9 @@ button:focus, a:focus, input:focus, textarea:focus { outline: 3px solid var(--fo
   .rail-nav a { min-width: 2.85rem; min-height: 2.85rem; padding: .5rem .35rem; font-size: .55rem; }
   .rail-nav a span { display: none; }
   .content-column { margin-left: 0; }
+  .github-activity-heading { align-items: flex-start; flex-direction: column; gap: 1.5rem; }
+  .github-activity-frame { margin-top: 1.5rem; }
+  .github-activity-fallback { align-items: flex-start; flex-direction: column; }
   .topbar { min-height: auto; padding: .8rem 1rem; }
   .topbar > span { display: none; }
   .topbar > div { width: 100%; margin-left: 0; justify-content: space-between; gap: 0; }
