@@ -44,7 +44,7 @@ app.get('/api/health', async (_req, res) => {
   if (pool) {
     try { await pool.query('SELECT 1'); database = 'connected' } catch { database = 'unavailable' }
   }
-  res.json({ ok: true, database })
+  res.json({ ok: true, database, email: resend ? 'configured' : 'not configured' })
 })
 
 app.post('/api/contact', contactRateLimit, async (req, res) => {
@@ -59,7 +59,7 @@ app.post('/api/contact', contactRateLimit, async (req, res) => {
   if (!resend) return res.status(503).json({ error: 'The contact email service is not configured yet. Please use the direct email option.' })
 
   try {
-    const { error } = await resend.emails.send({
+    const { data, error } = await resend.emails.send({
       from: contactFromEmail,
       to: [contactToEmail],
       replyTo: email,
@@ -70,6 +70,7 @@ app.post('/api/contact', contactRateLimit, async (req, res) => {
       console.error('Contact email send failed:', error)
       return res.status(502).json({ error: 'Your message could not be sent. Please use the direct email option.' })
     }
+    console.log(`Contact email accepted by Resend: ${data?.id || 'id unavailable'}`)
     return res.status(201).json({ ok: true, message: 'Message received. Thank you.' })
   } catch (error) {
     console.error('Contact email send failed:', error)
