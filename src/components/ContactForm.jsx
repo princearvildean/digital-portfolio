@@ -1,6 +1,7 @@
 import { useState } from 'react'
 
 const initialForm = { name: '', email: '', message: '' }
+const apiBaseUrl = (import.meta.env.VITE_API_URL || '').replace(/\/$/, '')
 
 export function ContactForm({ fallbackEmail }) {
   const [form, setForm] = useState(initialForm)
@@ -17,7 +18,7 @@ export function ContactForm({ fallbackEmail }) {
     setStatus({ type: 'loading', message: 'Sending your message...' })
     setErrors({})
     try {
-      const response = await fetch('/api/contact', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(form) })
+      const response = await fetch(`${apiBaseUrl}/api/contact`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(form) })
       const result = await response.json().catch(() => ({}))
       if (!response.ok) {
         setErrors(result.fields || {})

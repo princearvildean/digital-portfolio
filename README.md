@@ -30,6 +30,8 @@ This repository can run as one Render Web Service. Use `npm install && npm run b
 
 Set `ALLOWED_ORIGIN` to the deployed Render URL. Add `DATABASE_URL` after creating a PostgreSQL database, then run the contact-message migration.
 
+If the frontend is deployed as a separate Render Static Site, set its `VITE_API_URL` environment variable to the Web Service URL, for example `https://your-api.onrender.com`. Set `ALLOWED_ORIGIN` on the Web Service to the Static Site URL.
+
 ## Optional next improvements
 
 - Add repository access details only if a project repository can be made public. The BroBlendz repository is intentionally undisclosed because it is private.
