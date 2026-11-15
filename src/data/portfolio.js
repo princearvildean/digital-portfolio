@@ -7,7 +7,11 @@ export const profile = {
   degree: 'BS Information Technology',
   graduation: '2027',
   availability: 'Internship opportunities',
-  links: { github: '', linkedin: '' },
+  roles: 'Web Development / IT Support',
+  roleSummary: 'web development or IT support',
+  preferredLocation: 'Makati City / Metro Manila',
+  bio: 'Information Technology student graduating in 2027, building practical web products with React, JavaScript, Tailwind CSS, Express.js, and PostgreSQL. I enjoy turning real workflows into clear, dependable interfaces and I am looking for a web development or IT support internship where I can learn quickly and contribute carefully.',
+  links: { github: 'https://github.com/princearvildean', linkedin: 'https://www.linkedin.com/in/prince-arvildean-seguros-a75a253b6/' },
 }
 
 export const projects = [
@@ -22,7 +26,7 @@ export const projects = [
     metric: 'Deployed full-stack system',
     tags: ['React', 'Tailwind', 'Laravel', 'PostgreSQL', 'Docker', 'Render'],
     accent: 'blue',
-    liveUrl: '',
+    liveUrl: 'https://broblendz-frontend-nh6p.onrender.com/',
     repoUrl: '',
   },
 ]
