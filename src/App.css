@@ -5,6 +5,8 @@ button { border: 0; cursor: pointer; }
 .app-shell { min-height: 100vh; background: var(--paper); color: var(--ink); }
 .theme-dark { --paper: #171814; --ink: #f4f1e8; --muted: #a9a69b; --line: #474840; --blue: #7186ff; --acid: #c8ff39; --coral: #ff7651; background: var(--paper); color: var(--ink); }
 .theme-dark .about-section { background: #0d0e0c; color: #f4f1e8; }
+.theme-dark .site-rail { background: #080907; color: #f4f1e8; }
+.theme-dark .brand-mark { color: #f4f1e8; }
 .theme-dark .stack-section { background: #24251f; }
 .theme-dark .hero-map { background: #24251f; }
 .theme-dark .hero-map::before { border-color: #57584f; }
@@ -12,6 +14,7 @@ button { border: 0; cursor: pointer; }
 .theme-dark .index-dialog { background: #20211c; color: #f4f1e8; }
 .theme-dark .index-dialog > p { color: #a9a69b; }
 .theme-dark .portrait-frame { background: #c9c6ba; }
+.theme-dark .project-details:not(.coral) p:not(.kicker) { color: #41423b; }
 .quiet-mode *, .quiet-mode *::before, .quiet-mode *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; }
 .skip-link { position: fixed; z-index: 20; left: 1rem; top: -5rem; padding: .75rem 1rem; background: var(--ink); color: var(--paper); }
 .skip-link:focus { top: 1rem; }
@@ -40,7 +43,7 @@ button { border: 0; cursor: pointer; }
 .kicker, .section-index { color: var(--muted); }
 .hero-copy-wrap h1 { max-width: 54rem; margin: 2.5rem 0 3.5rem; font-size: clamp(4rem, 9vw, 9.5rem); line-height: .84; letter-spacing: -.09em; font-weight: 700; }
 .hero-copy-wrap h1 span, .stack-heading h2 span { color: var(--blue); font-style: italic; }
-.hero-lede { max-width: 32rem; color: #4d4c46; font-size: clamp(1.1rem, 1.6vw, 1.45rem); line-height: 1.45; }
+.hero-lede { max-width: 32rem; color: var(--muted); font-size: clamp(1.1rem, 1.6vw, 1.45rem); line-height: 1.45; }
 .hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 1.5rem; margin-top: 3rem; }
 .primary-link, .text-button { display: inline-flex; align-items: center; gap: .7rem; padding: .9rem 1rem; background: var(--ink); color: var(--paper); font: .7rem 'DM Mono', monospace; letter-spacing: .08em; text-transform: uppercase; transition: transform .2s ease, background .2s ease; }
 .primary-link:hover, .primary-link:focus-visible { transform: translateY(-.2rem); background: var(--blue); }
@@ -155,5 +158,6 @@ button { border: 0; cursor: pointer; }
 .dialog-links button b { font-size: 1rem; font-weight: 400; }
 .dialog-links button:hover, .dialog-links button:focus-visible { color: var(--blue); padding-left: .5rem; }
 button:focus-visible, a:focus-visible { outline: 2px solid var(--blue); outline-offset: 4px; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; } }
 @media (max-width: 1000px) { .hero-section { grid-template-columns: 1fr; } .hero-map { max-width: 34rem; width: 100%; } .about-grid, .section-heading-row, .stack-heading { grid-template-columns: 1fr; gap: 3rem; } .project-grid { grid-template-columns: 1fr 1fr; } .project-card:last-child { grid-column: span 2; } .skill-detail { grid-template-columns: 1fr; gap: 3rem; } }
 @media (max-width: 680px) { .site-rail { position: sticky; top: 0; inset: auto; width: 100%; height: auto; flex-direction: row; justify-content: space-between; padding: .8rem 1rem; } .brand-mark { display: flex; align-items: center; gap: .6rem; } .brand-mark small, .rail-bottom { display: none; } .rail-nav { display: flex; gap: .3rem; margin: 0; } .rail-nav button { padding: .5rem; } .rail-nav button span { display: none; } .content-column { margin-left: 0; } .topbar { height: auto; padding: 1rem 1.2rem; } .topbar > span { display: none; } .section-pad { padding: 5rem 1.2rem; } .hero-copy-wrap h1 { font-size: clamp(3.5rem, 17vw, 6rem); } .hero-map { min-height: 29rem; } .project-grid { grid-template-columns: 1fr; } .project-card, .project-card:last-child { grid-column: auto; min-height: 28rem; } .project-details { grid-template-columns: 1fr; padding: 1.5rem; } .skill-switcher { grid-template-columns: 1fr; } .skill-switcher button { border-right: 0; border-bottom: 1px solid var(--ink); } .skill-switcher button:last-child { border-bottom: 0; } .contact-actions, .site-footer { align-items: flex-start; flex-direction: column; } .site-footer { padding: 1.2rem; } }
