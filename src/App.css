@@ -18,6 +18,7 @@ button { border: 0; cursor: pointer; }
 .theme-dark .about-facts strong { color: #f4f1e8; }
 .theme-dark .project-details:not(.coral):not(.blue) p:not(.kicker) { color: #d1cec4; }
 .theme-dark .project-details.blue p:not(.kicker) { color: #15161b; }
+.theme-dark .skill-switcher button:hover, .theme-dark .skill-switcher button:focus-visible, .theme-dark .skill-switcher button.active { color: #141513; }
 .quiet-mode *, .quiet-mode *::before, .quiet-mode *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; }
 .skip-link { position: fixed; z-index: 20; left: 1rem; top: -5rem; padding: .75rem 1rem; background: var(--ink); color: var(--paper); }
 .skip-link:focus { top: 1rem; }
