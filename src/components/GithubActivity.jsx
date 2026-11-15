@@ -8,7 +8,7 @@ export function GithubActivity() {
 
   return <section className="github-activity" aria-labelledby="github-activity-title">
     <div className="github-activity-heading">
-      <div><p className="section-index">GitHub activity</p><h2 id="github-activity-title">Recent coding practice, in public.</h2></div>
+      <div><p className="section-index">GitHub activity</p><h2 id="github-activity-title">Recent GitHub activity.</h2></div>
       <a className="text-button" href={githubProfile} target="_blank" rel="noreferrer">View GitHub profile <span>-&gt;</span></a>
     </div>
     <div className="github-activity-frame">
