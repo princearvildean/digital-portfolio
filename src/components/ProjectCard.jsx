@@ -2,7 +2,7 @@ export function ProjectCard({ project, selected, onSelect }) {
   return <button className={`project-card ${project.accent} ${selected ? 'selected' : ''}`} onClick={onSelect} aria-expanded={selected} aria-controls={`case-${project.id}`}>
     <span className="card-number">{project.number} / {project.type}</span>
     <span className="card-year">{project.year}</span>
-    <span className="card-shape" aria-hidden="true"><i /><i /><i /></span>
+    {project.screenshots?.[0] && <span className="card-preview" aria-hidden="true"><img src={project.screenshots[0].src} alt="" loading="lazy" /></span>}
     <span className="card-content"><strong>{project.title}</strong><span>{project.summary}</span></span>
     <span className="card-cta">{selected ? 'Close case' : 'Open case'} <b>{selected ? '-' : '->'}</b></span>
   </button>

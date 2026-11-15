@@ -1,5 +1,9 @@
 import { useEffect, useRef } from 'react'
 
+function CloseIcon() {
+  return <svg className="dialog-close-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18" /></svg>
+}
+
 export function QuickIndex({ sections, onJump, onClose }) {
   const dialogRef = useRef(null)
   const closeRef = useRef(null)
@@ -22,9 +26,9 @@ export function QuickIndex({ sections, onJump, onClose }) {
 
   return <div className="index-overlay" role="presentation" onMouseDown={(event) => event.target === event.currentTarget && onClose()}>
     <div className="index-dialog" ref={dialogRef} role="dialog" aria-modal="true" aria-labelledby="index-title">
-      <div className="dialog-top"><span id="index-title">Quick index</span><button ref={closeRef} onClick={onClose} aria-label="Close quick index">Esc</button></div>
-      <p>Jump to a section. Your keyboard works here too.</p>
-      <div className="dialog-links">{sections.map((section) => <button key={section.id} onClick={() => onJump(section.path)}><span>{section.index}</span>{section.label}<b>↘</b></button>)}</div>
+      <div className="dialog-top"><span id="index-title">Quick index</span><button ref={closeRef} onClick={onClose} aria-label="Close quick index" title="Close quick index"><CloseIcon /></button></div>
+      <p>Jump to a section.</p>
+      <div className="dialog-links">{sections.map((section) => <button key={section.id} onClick={() => onJump(section.path)}><span>{section.index}</span>{section.label}<b>-&gt;</b></button>)}</div>
     </div>
   </div>
 }

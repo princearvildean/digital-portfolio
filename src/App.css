@@ -96,6 +96,8 @@ button { border: 0; cursor: pointer; }
 .quiet-toggle:hover, .quiet-toggle:focus-visible, .theme-toggle:hover, .theme-toggle:focus-visible { color: var(--ink); }
 .index-button { display: flex; align-items: center; gap: .75rem; color: var(--ink); }
 .index-button kbd { border: 1px solid var(--line); padding: .35rem .5rem; color: var(--muted); font: inherit; }
+.index-icon { display: none; }
+.index-icon-svg, .dialog-close-icon { width: 1.25rem; height: 1.25rem; fill: none; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1.6; }
 
 @keyframes page-in { from { opacity: 0; transform: translateY(.6rem); } to { opacity: 1; transform: translateY(0); } }
 
@@ -163,12 +165,9 @@ button { border: 0; cursor: pointer; }
 .card-number, .card-year { position: relative; z-index: 2; }
 .card-number { align-self: flex-start; }
 .card-year { position: absolute; top: 1.5rem; right: 1.5rem; }
-.card-shape { position: absolute; inset: 22% 12% auto; height: 11rem; display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1.2fr 1fr; gap: .5rem; transition: transform .4s ease; }
-.card-shape i { border: 1px solid currentColor; opacity: .75; }
-.card-shape i:first-child { grid-column: span 2; background: rgba(255,255,255,.2); }
-.card-shape i:nth-child(2) { background: rgba(20,21,19,.2); }
-.card-shape i:nth-child(3) { background: rgba(255,255,255,.38); }
-.project-card:hover .card-shape, .project-card:focus-visible .card-shape { transform: scale(1.05); }
+.card-preview { position: absolute; z-index: 1; top: 5.5rem; right: 1.5rem; left: 1.5rem; height: clamp(10rem, 24vw, 15rem); overflow: hidden; border: 1px solid currentColor; background: #fff; }
+.card-preview img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center top; transition: transform .4s ease; }
+.project-card:hover .card-preview img, .project-card:focus-visible .card-preview img { transform: scale(1.03); }
 .card-content { position: relative; z-index: 2; margin-top: auto; display: grid; gap: 1rem; }
 .card-content strong { max-width: 17rem; font-family: 'Host Grotesk', system-ui, sans-serif; font-size: clamp(2rem, 3.4vw, 3.7rem); letter-spacing: -.055em; line-height: .94; font-weight: 500; }
 .card-content span { max-width: 27rem; font-size: .98rem; line-height: 1.4; }
@@ -284,7 +283,7 @@ button { border: 0; cursor: pointer; }
 .index-overlay { position: fixed; inset: 0; z-index: 30; display: grid; place-items: center; padding: 1rem; background: rgba(20, 24, 20, .76); backdrop-filter: blur(8px); }
 .index-dialog { width: min(100%, 34rem); background: var(--paper); color: var(--ink); padding: 1.5rem; box-shadow: .8rem .8rem 0 var(--blue); }
 .dialog-top { display: flex; justify-content: space-between; border-bottom: 1px solid var(--line); padding-bottom: 1rem; }
-.dialog-top button { min-height: 2.75rem; background: transparent; color: var(--muted); font: inherit; }
+.dialog-top button { width: 2.75rem; min-height: 2.75rem; display: inline-grid; place-items: center; background: transparent; color: var(--muted); font: inherit; }
 .index-dialog > p { color: var(--muted); margin: 1.2rem 0; }
 .dialog-links { display: grid; }
 .dialog-links button { min-height: 3.25rem; display: grid; grid-template-columns: 2rem 1fr auto; align-items: center; gap: .7rem; padding: 1rem 0; border-top: 1px solid var(--line); background: transparent; text-align: left; transition: color .2s ease, padding .2s ease; }
@@ -320,10 +319,12 @@ button:focus, a:focus, input:focus, textarea:focus { outline: 3px solid var(--fo
   .content-column { margin-left: 0; }
   .topbar { min-height: auto; padding: .8rem 1.2rem; }
   .topbar > span { display: none; }
-  .topbar > div { width: 100%; justify-content: space-between; gap: .45rem; }
+  .topbar > div { width: auto; margin-left: auto; justify-content: flex-end; gap: .45rem; }
   .topbar button { font-size: .58rem; }
   .mobile-nav-toggle { display: inline-flex; min-width: 5rem; justify-content: center; }
-  .index-button kbd { display: none; }
+  .index-button { width: 2.75rem; min-width: 2.75rem; justify-content: center; padding: 0; }
+  .index-button kbd, .index-label { display: none; }
+  .index-icon { display: inline-flex; align-items: center; justify-content: center; }
   .section-pad { padding: 5rem 1.2rem; }
   .hero-copy-wrap h1 { font-size: clamp(3.25rem, 16vw, 6rem); }
   .hero-map { min-height: 29rem; }
