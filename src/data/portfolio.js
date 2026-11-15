@@ -22,7 +22,7 @@ export const projects = [
     year: '2025-PRESENT',
     title: 'BroBlendz booking system',
     summary: 'A full-stack appointment booking and online payment system with SMS notifications and an administrative portal.',
-    detail: 'Built and deployed with a four-member team. The system supports customer booking workflows, appointment administration, online payments and refunds, plus email and SMS communication.',
+    detail: 'Built and deployed with a four-member team. The system supports customer booking workflows, appointment administration, online payments and refunds, plus email and SMS communication. We also used AI-assisted development workflows for exploration, implementation drafts, debugging, and documentation, with human review and validation throughout.',
     metric: 'Deployed full-stack system',
     tags: ['React', 'Tailwind', 'Laravel', 'PostgreSQL', 'Docker', 'Render'],
     accent: 'blue',
@@ -34,7 +34,7 @@ export const projects = [
 export const skills = {
   frontend: { label: 'Frontend', description: 'Interfaces that feel obvious on the first pass.', items: ['React', 'JavaScript', 'HTML / CSS', 'Tailwind CSS'] },
   backend: { label: 'Backend', description: 'JavaScript services with a clear path from request to data.', items: ['Express.js', 'Node.js', 'REST APIs', 'PostgreSQL'] },
-  practice: { label: 'Tools + Secondary', description: 'The integrations and secondary skills that help a team ship reliably.', items: ['MySQL', 'Git / GitHub', 'Docker / Render', 'PHP + Laravel'] },
+  practice: { label: 'Tools + Workflow', description: 'The tools and working habits that help a team ship reliably.', items: ['AI-assisted development', 'Git / GitHub', 'Docker / Render', 'PHP + Laravel'] },
 }
 
 export const sections = [
