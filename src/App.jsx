@@ -21,7 +21,7 @@ function ThemeIcon({ darkMode }) {
 }
 
 function IndexIcon() {
-  return <svg className="index-icon-svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 6h14M5 12h14M5 18h14" /></svg>
+  return <svg className="index-icon-svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6h.01M10 6h8M6 12h.01M10 12h8M6 18h.01M10 18h8" /></svg>
 }
 
 function PortfolioShell() {
