@@ -22,7 +22,7 @@ export function QuickIndex({ sections, onJump, onClose }) {
 
   return <div className="index-overlay" role="presentation" onMouseDown={(event) => event.target === event.currentTarget && onClose()}>
     <div className="index-dialog" ref={dialogRef} role="dialog" aria-modal="true" aria-labelledby="index-title">
-      <div className="dialog-top"><span id="index-title">QUICK INDEX</span><button ref={closeRef} onClick={onClose} aria-label="Close quick index">ESC</button></div>
+      <div className="dialog-top"><span id="index-title">Quick index</span><button ref={closeRef} onClick={onClose} aria-label="Close quick index">Esc</button></div>
       <p>Jump to a section. Your keyboard works here too.</p>
       <div className="dialog-links">{sections.map((section) => <button key={section.id} onClick={() => onJump(section.path)}><span>{section.index}</span>{section.label}<b>↘</b></button>)}</div>
     </div>

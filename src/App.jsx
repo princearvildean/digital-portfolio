@@ -20,6 +20,7 @@ function PortfolioShell() {
   const [indexOpen, setIndexOpen] = useState(false)
   const [quietMode, setQuietMode] = useState(false)
   const [darkMode, setDarkMode] = useState(initialDarkMode)
+  const [mobileNavOpen, setMobileNavOpen] = useState(false)
   const indexButtonRef = useRef(null)
   const mainRef = useRef(null)
   const wasIndexOpen = useRef(false)
@@ -62,21 +63,22 @@ function PortfolioShell() {
 
   const jumpTo = (path) => {
     setIndexOpen(false)
+    setMobileNavOpen(false)
     navigate(path)
   }
 
   return <div className={`app-shell ${quietMode ? 'quiet-mode' : ''} ${darkMode ? 'theme-dark' : ''}`}>
     <a className="skip-link" href="#main-content">Skip to content</a>
-    <aside className="site-rail" aria-label="Primary navigation">
-      <Link className="brand-mark" to="/" aria-label="Back to start"><span>{profile.initials}</span><small>PORTFOLIO<br />/ 2026</small></Link>
-      <nav className="rail-nav">{sections.map((section) => <NavLink key={section.id} to={section.path} end={section.path === '/'} className={section.id === activeSection ? 'active' : ''} aria-current={section.id === activeSection ? 'page' : undefined}><span>{section.index}</span>{section.label}</NavLink>)}</nav>
-      <div className="rail-bottom"><span className="status-dot" /> OPEN TO INTERNSHIPS</div>
+    <aside className={`site-rail ${mobileNavOpen ? 'mobile-open' : ''}`} aria-label="Primary navigation">
+      <Link className="brand-mark" to="/" onClick={() => setMobileNavOpen(false)} aria-label="Back to start"><span>{profile.initials}</span><small>Portfolio<br />/ 2026</small></Link>
+      <nav className="rail-nav" id="primary-navigation">{sections.map((section) => <NavLink key={section.id} to={section.path} onClick={() => setMobileNavOpen(false)} end={section.path === '/'} className={section.id === activeSection ? 'active' : ''} aria-current={section.id === activeSection ? 'page' : undefined}><span>{section.index}</span>{section.label}</NavLink>)}</nav>
+      <div className="rail-bottom"><span className="status-dot" aria-hidden="true" /> Open to internships</div>
     </aside>
 
     <div className="content-column">
-      <header className="topbar"><span>{profile.shortName.toUpperCase()} / DIGITAL WORKBENCH</span><div><button className="theme-toggle" onClick={() => setDarkMode((mode) => !mode)} aria-pressed={darkMode} aria-label={`Switch to ${darkMode ? 'light' : 'dark'} mode`}>{darkMode ? 'LIGHT MODE' : 'DARK MODE'}</button><button className="quiet-toggle" onClick={() => setQuietMode((mode) => !mode)} aria-pressed={quietMode} aria-label={`${quietMode ? 'Enable' : 'Disable'} motion`}>{quietMode ? 'MOTION: LOW' : 'MOTION: ON'}</button><button ref={indexButtonRef} className="index-button" onClick={() => setIndexOpen(true)} aria-label="Open quick index"><span>QUICK INDEX</span><kbd>CTRL K</kbd></button></div></header>
+      <header className="topbar"><span>{profile.shortName} / Digital workbench</span><div><button className="mobile-nav-toggle" onClick={() => setMobileNavOpen((open) => !open)} aria-expanded={mobileNavOpen} aria-controls="primary-navigation" aria-label={mobileNavOpen ? 'Close navigation' : 'Open navigation'}>{mobileNavOpen ? 'Close' : 'Menu'}</button><button className="theme-toggle" onClick={() => setDarkMode((mode) => !mode)} aria-pressed={darkMode} aria-label={`Switch to ${darkMode ? 'light' : 'dark'} mode`}>{darkMode ? 'Light mode' : 'Dark mode'}</button><button className="quiet-toggle" onClick={() => setQuietMode((mode) => !mode)} aria-pressed={quietMode} aria-label={`${quietMode ? 'Enable' : 'Disable'} motion`}>{quietMode ? 'Motion: low' : 'Motion: on'}</button><button ref={indexButtonRef} className="index-button" onClick={() => setIndexOpen(true)} aria-label="Open quick index"><span>Quick index</span><kbd>Ctrl K</kbd></button></div></header>
       <main ref={mainRef} id="main-content" tabIndex="-1"><Routes><Route path="/" element={<HomePage />} /><Route path="/about" element={<AboutPage />} /><Route path="/work" element={<WorkPage />} /><Route path="/stack" element={<StackPage />} /><Route path="/contact" element={<ContactPage />} /><Route path="*" element={<NotFoundPage />} /></Routes></main>
-      <footer className="site-footer"><span>BUILT WITH INTENTION / REACT + EXPRESS + RESEND</span><span>© 2026 {profile.shortName.toUpperCase()}</span></footer>
+      <footer className="site-footer"><span>Built with React, Express, and Resend</span><span>© 2026 {profile.shortName}</span></footer>
     </div>
 
     {indexOpen && <QuickIndex sections={sections} onJump={jumpTo} onClose={() => setIndexOpen(false)} />}
