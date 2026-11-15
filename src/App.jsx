@@ -37,6 +37,10 @@ function App() {
   const [activeSkill, setActiveSkill] = useState('frontend')
   const [indexOpen, setIndexOpen] = useState(false)
   const [quietMode, setQuietMode] = useState(false)
+  const [darkMode, setDarkMode] = useState(() => {
+    const saved = window.localStorage.getItem('portfolio-theme')
+    return saved ? saved === 'dark' : window.matchMedia?.('(prefers-color-scheme: dark)').matches
+  })
 
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
@@ -46,6 +50,11 @@ function App() {
     sections.forEach(({ id }) => document.getElementById(id) && observer.observe(document.getElementById(id)))
     return () => observer.disconnect()
   }, [])
+
+  useEffect(() => {
+    window.localStorage.setItem('portfolio-theme', darkMode ? 'dark' : 'light')
+    document.documentElement.style.colorScheme = darkMode ? 'dark' : 'light'
+  }, [darkMode])
 
   useEffect(() => {
     const handleKeyDown = (event) => {
@@ -67,7 +76,7 @@ function App() {
   }
 
   return (
-    <div className={`app-shell ${quietMode ? 'quiet-mode' : ''}`}>
+    <div className={`app-shell ${quietMode ? 'quiet-mode' : ''} ${darkMode ? 'theme-dark' : ''}`}>
       <a className="skip-link" href="#main-content">Skip to content</a>
       <aside className="site-rail" aria-label="Primary navigation">
         <a className="brand-mark" href="#top" aria-label="Back to top"><span>PS</span><small>PORTFOLIO<br />/ 2026</small></a>
@@ -76,7 +85,7 @@ function App() {
       </aside>
 
       <div className="content-column" id="main-content">
-        <header className="topbar"><span>PRINCE SEGUROS / DIGITAL WORKBENCH</span><div><button className="quiet-toggle" onClick={() => setQuietMode((mode) => !mode)} aria-pressed={quietMode}>{quietMode ? 'MOTION: LOW' : 'MOTION: ON'}</button><button className="index-button" onClick={() => setIndexOpen(true)}><span>QUICK INDEX</span><kbd>CTRL K</kbd></button></div></header>
+        <header className="topbar"><span>PRINCE SEGUROS / DIGITAL WORKBENCH</span><div><button className="theme-toggle" onClick={() => setDarkMode((mode) => !mode)} aria-pressed={darkMode}>{darkMode ? 'LIGHT MODE' : 'DARK MODE'}</button><button className="quiet-toggle" onClick={() => setQuietMode((mode) => !mode)} aria-pressed={quietMode}>{quietMode ? 'MOTION: LOW' : 'MOTION: ON'}</button><button className="index-button" onClick={() => setIndexOpen(true)}><span>QUICK INDEX</span><kbd>CTRL K</kbd></button></div></header>
 
         <main>
           <section className="hero-section section-pad" id="top">

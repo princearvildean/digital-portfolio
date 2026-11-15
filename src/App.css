@@ -3,6 +3,15 @@
 button, a { font: inherit; }
 button { border: 0; cursor: pointer; }
 .app-shell { min-height: 100vh; background: var(--paper); color: var(--ink); }
+.theme-dark { --paper: #171814; --ink: #f4f1e8; --muted: #a9a69b; --line: #474840; --blue: #7186ff; --acid: #c8ff39; --coral: #ff7651; background: var(--paper); color: var(--ink); }
+.theme-dark .about-section { background: #0d0e0c; color: #f4f1e8; }
+.theme-dark .stack-section { background: #24251f; }
+.theme-dark .hero-map { background: #24251f; }
+.theme-dark .hero-map::before { border-color: #57584f; }
+.theme-dark .orbit-ring { border-color: #57584f; }
+.theme-dark .index-dialog { background: #20211c; color: #f4f1e8; }
+.theme-dark .index-dialog > p { color: #a9a69b; }
+.theme-dark .portrait-frame { background: #c9c6ba; }
 .quiet-mode *, .quiet-mode *::before, .quiet-mode *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; }
 .skip-link { position: fixed; z-index: 20; left: 1rem; top: -5rem; padding: .75rem 1rem; background: var(--ink); color: var(--paper); }
 .skip-link:focus { top: 1rem; }
@@ -20,8 +29,8 @@ button { border: 0; cursor: pointer; }
 .content-column { margin-left: 5.5rem; min-width: 0; }
 .topbar { height: 4.8rem; display: flex; justify-content: space-between; align-items: center; padding: 0 clamp(1.5rem, 4vw, 5rem); border-bottom: 1px solid var(--line); color: var(--muted); }
 .topbar > div { display: flex; align-items: center; gap: 1.3rem; }
-.quiet-toggle, .index-button { background: transparent; color: var(--muted); font: .66rem 'DM Mono', monospace; letter-spacing: .08em; text-transform: uppercase; }
-.quiet-toggle:hover, .quiet-toggle:focus-visible { color: var(--ink); }
+.quiet-toggle, .theme-toggle, .index-button { background: transparent; color: var(--muted); font: .66rem 'DM Mono', monospace; letter-spacing: .08em; text-transform: uppercase; }
+.quiet-toggle:hover, .quiet-toggle:focus-visible, .theme-toggle:hover, .theme-toggle:focus-visible { color: var(--ink); }
 .index-button { display: flex; align-items: center; gap: .75rem; color: var(--ink); }
 .index-button kbd { border: 1px solid var(--line); padding: .35rem .5rem; color: var(--muted); }
 .section-pad { padding: clamp(5rem, 10vw, 10rem) clamp(1.5rem, 7vw, 9rem); }
