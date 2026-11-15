@@ -1,26 +1,32 @@
 # Personal Portfolio
 
-An editorial-style personal portfolio built with React, Vite, Tailwind CSS, Express, and PostgreSQL-ready APIs.
+An interactive personal portfolio for Prince Arvildean B. Seguros, built with React, Vite, Tailwind CSS, Express, and PostgreSQL.
 
-## Run the frontend
+## Frontend
 
 ```bash
 npm install
 npm run dev
 ```
 
-## Run the API
+The Vite development server proxies `/api` requests to `http://localhost:3001`.
 
-Copy `.env.example` to `.env`, update `DATABASE_URL` when PostgreSQL is ready, then run:
+## Contact API
+
+1. Copy `.env.example` to `.env`.
+2. Set a real PostgreSQL `DATABASE_URL`.
+3. Run `server/migrations/001_create_contact_messages.sql` against the database.
+4. Start the API in another terminal:
 
 ```bash
 npm run server:dev
 ```
 
-The API exposes `GET /api/health` and a starter `POST /api/contact` endpoint.
+The API exposes `GET /api/health` and a validated, rate-limited `POST /api/contact` endpoint. If PostgreSQL is not configured, the contact form fails honestly and offers direct email instead of pretending the message was saved.
 
-## Personalize next
+## Personal details still needed
 
-- Replace placeholder name, location, email, and profile image.
-- Add real project details and links in `src/App.jsx`.
-- Decide whether contact submissions should be stored in PostgreSQL or sent through an email service.
+- Add the real GitHub URL in `src/data/portfolio.js`.
+- Add the real LinkedIn URL in `src/data/portfolio.js`.
+- Add live and repository URLs for projects when available.
+- Add additional projects and screenshots as they are ready.
