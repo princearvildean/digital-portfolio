@@ -1,48 +1,140 @@
+import { useEffect, useMemo, useState } from 'react'
 import './App.css'
 
 const projects = [
-  { number: '01', title: 'Project Atlas', type: 'FULL-STACK PRODUCT', description: 'A focused workspace for turning messy research into clear, shareable decisions.', stack: ['React', 'Express', 'PostgreSQL'], tone: 'blue' },
-  { number: '02', title: 'Your next project', type: 'IN PROGRESS', description: 'A new case study will live here as you ship, learn, and collect the details that matter.', stack: ['React', 'Tailwind', 'Node.js'], tone: 'orange' },
+  {
+    id: 'atlas',
+    number: '01',
+    type: 'BUILD',
+    year: '2025',
+    title: 'Atlas of small decisions',
+    summary: 'A lightweight research workspace that helps teams move from scattered notes to a decision they can explain.',
+    detail: 'Atlas turns an intimidating blank canvas into a sequence of small, reversible steps. The interface keeps context close, makes uncertainty visible, and gives each decision a clear next action.',
+    metric: '3.4× faster synthesis',
+    tags: ['React', 'Express', 'PostgreSQL'],
+    accent: 'acid',
+  },
+  {
+    id: 'signal',
+    number: '02',
+    type: 'RESEARCH',
+    year: '2024',
+    title: 'Signal, not noise',
+    summary: 'An accessibility audit translated into a practical component checklist for student product teams.',
+    detail: 'The project maps common interface friction to concrete repair patterns. It is part field guide, part test plan, and designed to make inclusive decisions easier to repeat.',
+    metric: '26 friction points mapped',
+    tags: ['HCI', 'Accessibility', 'Systems'],
+    accent: 'blue',
+  },
+  {
+    id: 'afterimage',
+    number: '03',
+    type: 'EXPERIMENT',
+    year: '2024',
+    title: 'Afterimage radio',
+    summary: 'A small generative interface for collecting the sounds, places, and moments that make a city feel familiar.',
+    detail: 'Afterimage uses a restrained visual language so the content can stay human. Every interaction gives orientation, never asks the user to guess what changed.',
+    metric: '0 dead-end interactions',
+    tags: ['JavaScript', 'Motion', 'Prototyping'],
+    accent: 'coral',
+  },
 ]
 
-const skills = ['React', 'JavaScript', 'Tailwind CSS', 'Accessible UI', 'Express.js', 'PostgreSQL']
+const skills = {
+  frontend: { label: 'Frontend', description: 'Interfaces that feel obvious on the first pass.', items: ['React', 'JavaScript', 'Tailwind CSS', 'Accessible UI'] },
+  backend: { label: 'Backend', description: 'Small, understandable services with a clear path to data.', items: ['Express.js', 'PostgreSQL', 'REST APIs', 'Validation'] },
+  practice: { label: 'Practice', description: 'The habits that keep the work useful after the demo.', items: ['HCI principles', 'Design systems', 'User testing', 'Documentation'] },
+}
+
+const sections = [
+  { id: 'top', label: 'Start', index: '00' },
+  { id: 'about', label: 'About', index: '01' },
+  { id: 'work', label: 'Work', index: '02' },
+  { id: 'stack', label: 'Stack', index: '03' },
+  { id: 'contact', label: 'Contact', index: '04' },
+]
 
 function App() {
+  const [activeSection, setActiveSection] = useState('top')
+  const [filter, setFilter] = useState('ALL')
+  const [selectedProject, setSelectedProject] = useState(null)
+  const [activeSkill, setActiveSkill] = useState('frontend')
+  const [indexOpen, setIndexOpen] = useState(false)
+  const [quietMode, setQuietMode] = useState(false)
+
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      const visible = entries.filter((entry) => entry.isIntersecting).sort((a, b) => b.intersectionRatio - a.intersectionRatio)
+      if (visible[0]) setActiveSection(visible[0].target.id)
+    }, { rootMargin: '-20% 0px -60% 0px', threshold: [0, .25, .5] })
+    sections.forEach(({ id }) => document.getElementById(id) && observer.observe(document.getElementById(id)))
+    return () => observer.disconnect()
+  }, [])
+
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === 'k') {
+        event.preventDefault()
+        setIndexOpen((open) => !open)
+      }
+      if (event.key === 'Escape') setIndexOpen(false)
+    }
+    window.addEventListener('keydown', handleKeyDown)
+    return () => window.removeEventListener('keydown', handleKeyDown)
+  }, [])
+
+  const visibleProjects = useMemo(() => filter === 'ALL' ? projects : projects.filter((project) => project.type === filter), [filter])
+
+  const jumpTo = (id) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: quietMode ? 'auto' : 'smooth' })
+    setIndexOpen(false)
+  }
+
   return (
-    <main>
-      <section className="hero page-shell" id="top">
-        <div className="availability"><span /> AVAILABLE AFTER GRADUATION · 2026</div>
-        <h1>I build <em>useful things</em><br />for the web.</h1>
-        <p className="hero-copy">Hey, I&apos;m <strong>Your Name</strong> — a full-stack developer finishing a Bachelor of Science in Information Technology degree and turning late-night ideas into dependable digital products.</p>
-      </section>
+    <div className={`app-shell ${quietMode ? 'quiet-mode' : ''}`}>
+      <a className="skip-link" href="#main-content">Skip to content</a>
+      <aside className="site-rail" aria-label="Primary navigation">
+        <a className="brand-mark" href="#top" aria-label="Back to top"><span>PR</span><small>PORTFOLIO<br />/ 2026</small></a>
+        <nav className="rail-nav">{sections.map((section) => <button key={section.id} className={activeSection === section.id ? 'active' : ''} onClick={() => jumpTo(section.id)} aria-current={activeSection === section.id ? 'page' : undefined}><span>{section.index}</span>{section.label}</button>)}</nav>
+        <div className="rail-bottom"><span className="status-dot" /> OPEN TO THE RIGHT PROBLEM</div>
+      </aside>
 
-      <section className="profile-band" id="about">
-        <div className="profile-grid page-shell">
-          <figure className="portrait-frame" tabIndex="0" aria-label="Profile portrait"><img className="profile-photo" src="/profile-photo.jpg" alt="Portrait of Your Name" /><figcaption className="sticker">THIS IS ME</figcaption></figure>
-          <div className="profile-intro"><p className="eyebrow lime">MORE PERSON, LESS PERSONA.</p><h2>Curious by default.<br /><em>Serious about craft.</em></h2></div>
-          <div className="profile-details"><p>I like the point where logic meets lived experience: clean data models, fast interfaces, and tiny details that make software feel obvious.</p><p>Away from the screen, I&apos;m usually learning something new, hunting for good coffee, or explaining my latest side project to patient friends.</p></div>
-          <div className="fact-grid"><div><span>BASED IN</span><strong>Your City, PH</strong></div><div><span>DEGREE</span><strong>BS Computer Science</strong></div><div><span>LOOKING FOR</span><strong>Junior / Grad roles</strong></div></div>
-        </div>
-      </section>
+      <div className="content-column" id="main-content">
+        <header className="topbar"><span>PRINCE / DIGITAL WORKBENCH</span><div><button className="quiet-toggle" onClick={() => setQuietMode((mode) => !mode)} aria-pressed={quietMode}>{quietMode ? 'MOTION: LOW' : 'MOTION: ON'}</button><button className="index-button" onClick={() => setIndexOpen(true)}><span>QUICK INDEX</span><kbd>⌘ K</kbd></button></div></header>
 
-      <section className="projects page-shell" id="work">
-        <div className="section-heading"><div><p className="eyebrow">SELECTED WORK / 002</p><h2>Proof, not promises.</h2></div><p>Things I&apos;ve designed, built, broken, and made better.</p></div>
-        <div className="project-list">{projects.map((project) => <ProjectCard key={project.number} project={project} />)}</div>
-      </section>
+        <main>
+          <section className="hero-section section-pad" id="top">
+            <div className="hero-copy-wrap"><p className="kicker">FULL-STACK DEVELOPER / GRADUATING YEAR</p><h1>Interfaces for<br /><span>uncertain</span> moments.</h1><p className="hero-lede">I&apos;m Prince — I make digital products easier to understand, easier to use, and much harder to forget.</p><div className="hero-actions"><a className="primary-link" href="#work">View selected work <span>↘</span></a><button className="text-button" onClick={() => jumpTo('about')}>Read the short version <span>→</span></button></div></div>
+            <div className="hero-map" aria-label="Interactive portrait card">
+              <div className="map-label map-label-top">CURRENT POSITION <strong>01 / 04</strong></div>
+              <div className="photo-orbit"><div className="orbit-ring ring-one" /><div className="orbit-ring ring-two" /><div className="photo-card"><img src="/profile-photo.jpg" alt="Portrait of Prince" /><span className="photo-caption">PRINCE / BUILDER</span></div><span className="orbit-tag tag-a">REACT</span><span className="orbit-tag tag-b">HCI</span><span className="orbit-tag tag-c">PG</span></div>
+              <div className="map-label map-label-bottom">A small system for making<br /><strong>useful things feel human.</strong></div>
+            </div>
+          </section>
 
-      <section className="toolbox page-shell" id="toolbox">
-        <p className="eyebrow">TOOLBOX / 003</p><h2>Tools change.<br />Thinking scales.</h2>
-        <p className="toolbox-copy">I&apos;m comfortable across the stack and happiest when I can follow a problem from a user&apos;s click to a database row and back.</p>
-        <div className="skills-panel"><div className="skills-tabs"><span className="active">FRONTEND</span><span>BACKEND</span><span>TOOLS</span></div><div className="terminal-line">$ list-skills --all</div><div className="skills-list">{skills.map((skill, index) => <div className="skill-row" key={skill}><small>0{index + 1}</small><strong>{skill}</strong><span>{index < 3 ? 'daily' : 'familiar'}</span></div>)}</div></div>
-      </section>
+          <section className="about-section section-pad" id="about"><div className="section-index">01 — ABOUT</div><div className="about-grid"><h2>I care about the space between a person&apos;s intention and the interface that answers it.</h2><div className="about-notes"><p>That usually means asking one more question, removing one unnecessary step, and making the result feel a little more considered.</p><div className="about-facts"><div><span>BASED IN</span><strong>Philippines</strong></div><div><span>STUDYING</span><strong>Computer Science</strong></div><div><span>LOOKING FOR</span><strong>Junior / grad roles</strong></div></div></div></div></section>
 
-      <section className="contact" id="contact"><div className="page-shell contact-inner"><p className="eyebrow">ONE MORE TAB?</p><h2>Let&apos;s build something worth<br />bookmarking.</h2><p>I&apos;m looking for a team where I can learn fast, contribute early, and care deeply about what ships.</p><a className="contact-link" href="mailto:hello@example.com">SAY HELLO <span>↗</span></a></div></section>
-    </main>
+          <section className="work-section section-pad" id="work"><div className="section-heading-row"><div><div className="section-index">02 — SELECTED WORK</div><h2>Proof over promises.</h2></div><p>Three directions I keep returning to: clarity, care, and a little bit of surprise.</p></div><div className="filter-bar" role="toolbar" aria-label="Filter projects">{['ALL', 'BUILD', 'RESEARCH', 'EXPERIMENT'].map((option) => <button key={option} className={filter === option ? 'active' : ''} onClick={() => setFilter(option)} aria-pressed={filter === option}>{option}<small>{option === 'ALL' ? projects.length : projects.filter((project) => project.type === option).length}</small></button>)}</div><div className="project-grid">{visibleProjects.map((project) => <ProjectCard key={project.id} project={project} selected={selectedProject === project.id} onSelect={() => setSelectedProject(selectedProject === project.id ? null : project.id)} />)}</div>{selectedProject && <ProjectDetails project={projects.find((project) => project.id === selectedProject)} onClose={() => setSelectedProject(null)} />}</section>
+
+          <section className="stack-section section-pad" id="stack"><div className="section-index">03 — STACK / PRACTICE</div><div className="stack-heading"><h2>The tools are<br /><span>verbs.</span> Not identity.</h2><p>I choose the simplest tool that can make the next useful decision obvious.</p></div><div className="skill-switcher" role="tablist" aria-label="Skills by area">{Object.entries(skills).map(([key, skill]) => <button key={key} className={activeSkill === key ? 'active' : ''} onClick={() => setActiveSkill(key)} role="tab" aria-selected={activeSkill === key}>{skill.label}<span>↗</span></button>)}</div><div className="skill-detail" role="tabpanel"><div><p className="kicker">CURRENTLY IN THE TOOLBOX</p><h3>{skills[activeSkill].description}</h3></div><ul>{skills[activeSkill].items.map((item, index) => <li key={item}><span>0{index + 1}</span><strong>{item}</strong><em>{index < 2 ? 'in rotation' : 'building fluency'}</em></li>)}</ul></div></section>
+
+          <section className="contact-section section-pad" id="contact"><div className="contact-card"><div><div className="section-index">04 — CONTACT</div><h2>Have a good problem?</h2><p>Tell me what you&apos;re trying to make clearer. I&apos;d like to hear about it.</p></div><div className="contact-actions"><a className="contact-email" href="mailto:hello@example.com">hello@example.com <span>↗</span></a><div className="social-links"><a href="https://github.com" target="_blank" rel="noreferrer">GitHub</a><a href="https://linkedin.com" target="_blank" rel="noreferrer">LinkedIn</a></div></div></div></section>
+        </main>
+
+        <footer className="site-footer"><span>BUILT WITH INTENTION / REACT + EXPRESS + POSTGRESQL</span><span>© 2026 PRINCE</span></footer>
+      </div>
+
+      {indexOpen && <div className="index-overlay" role="presentation" onMouseDown={(event) => event.target === event.currentTarget && setIndexOpen(false)}><div className="index-dialog" role="dialog" aria-modal="true" aria-labelledby="index-title"><div className="dialog-top"><span id="index-title">QUICK INDEX</span><button onClick={() => setIndexOpen(false)} aria-label="Close quick index">ESC</button></div><p>Jump to a section. Your keyboard works here too.</p><div className="dialog-links">{sections.map((section) => <button key={section.id} onClick={() => jumpTo(section.id)}><span>{section.index}</span>{section.label}<b>↘</b></button>)}</div></div></div>}
+    </div>
   )
 }
 
-function ProjectCard({ project }) {
-  return <article className={`project-card ${project.tone}`}><div className="project-visual"><div className="browser-window"><div className="browser-bar"><i /><i /><i /></div><div className="browser-sidebar" /><div className="browser-content"><span /><span /><span /></div></div><span className="visual-note">42% FASTER REVIEW CYCLES</span></div><div className="project-copy"><p className="eyebrow">CASE {project.number}</p><h3>{project.title}</h3><p>{project.description}</p><div className="tags">{project.stack.map((item) => <span key={item}>{item}</span>)}</div><a href="#contact">DISCUSS THE BUILD <span>↗</span></a></div></article>
+function ProjectCard({ project, selected, onSelect }) {
+  return <button className={`project-card ${project.accent} ${selected ? 'selected' : ''}`} onClick={onSelect} aria-expanded={selected}><span className="card-number">{project.number} / {project.type}</span><span className="card-year">{project.year}</span><span className="card-shape" aria-hidden="true"><i /><i /><i /></span><span className="card-content"><strong>{project.title}</strong><span>{project.summary}</span></span><span className="card-cta">{selected ? 'CLOSE' : 'OPEN CASE'} <b>{selected ? '−' : '↗'}</b></span></button>
+}
+
+function ProjectDetails({ project, onClose }) {
+  return <div className={`project-details ${project.accent}`}><div><p className="kicker">CASE {project.number} / {project.type}</p><h3>{project.title}</h3><p>{project.detail}</p></div><div className="detail-side"><span>OUTCOME</span><strong>{project.metric}</strong><div className="tags">{project.tags.map((tag) => <span key={tag}>{tag}</span>)}</div><button onClick={onClose}>Close case <span>×</span></button></div></div>
 }
 
 export default App
