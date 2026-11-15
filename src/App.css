@@ -90,7 +90,8 @@ button { border: 0; cursor: pointer; }
 .topbar { position: sticky; top: 0; z-index: 8; min-height: var(--topbar-height); display: flex; justify-content: space-between; align-items: center; padding: 0 clamp(1.5rem, 4vw, 5rem); border-bottom: 1px solid var(--line); background: color-mix(in srgb, var(--paper) 92%, transparent); backdrop-filter: blur(12px); color: var(--muted); }
 .topbar > div { display: flex; align-items: center; gap: clamp(.65rem, 1.5vw, 1.3rem); }
 .topbar-actions { display: flex; align-items: center; gap: clamp(.65rem, 1.5vw, 1.3rem); }
-.mobile-nav-toggle { display: none; min-height: 2.75rem; background: transparent; color: var(--muted); font: .75rem 'JetBrains Mono', monospace; letter-spacing: .02em; }
+.mobile-menu-toggle { display: none; width: 2.75rem; min-width: 2.75rem; min-height: 2.75rem; place-items: center; padding: 0; background: transparent; color: var(--muted); }
+.mobile-menu-icon { width: 1.25rem; height: 1.25rem; fill: none; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1.6; }
 .quiet-toggle, .theme-toggle, .index-button { min-height: 2.75rem; background: transparent; color: var(--muted); font: .75rem 'JetBrains Mono', monospace; letter-spacing: .02em; text-transform: none; }
 .theme-toggle { width: 2.75rem; min-width: 2.75rem; display: inline-grid; place-items: center; padding: 0; }
 .theme-icon { width: 1.25rem; height: 1.25rem; fill: none; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1.6; }
@@ -320,7 +321,7 @@ button:focus, a:focus, input:focus, textarea:focus { outline: 3px solid var(--fo
   .topbar > div { width: 100%; margin-left: 0; justify-content: space-between; gap: 0; }
   .topbar-actions { gap: .55rem; }
   .topbar button { font-size: .64rem; }
-  .mobile-nav-toggle { display: inline-flex; flex: 0 1 6.25rem; width: 6.25rem; min-width: 5.75rem; min-height: 3.25rem; align-items: center; justify-content: center; padding: 0 .8rem; border: 1px solid var(--line); color: var(--ink); font-size: .72rem; line-height: 1; }
+  .mobile-menu-toggle { display: inline-grid; flex: 0 0 2.75rem; color: var(--ink); }
   .quiet-toggle { min-width: 4.6rem; padding: 0 .25rem; }
   .theme-toggle, .index-button { flex: 0 0 2.75rem; }
   .index-button { width: 2.75rem; min-width: 2.75rem; justify-content: center; padding: 0; }

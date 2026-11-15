@@ -24,6 +24,10 @@ function IndexIcon() {
   return <svg className="index-icon-svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6h.01M10 6h8M6 12h.01M10 12h8M6 18h.01M10 18h8" /></svg>
 }
 
+function MobileMenuIcon({ open }) {
+  return <svg className="mobile-menu-icon" viewBox="0 0 24 24" aria-hidden="true"><path d={open ? 'm6 6 12 12M18 6 6 18' : 'M5 7h14M5 12h14M5 17h14'} /></svg>
+}
+
 function PortfolioShell() {
   const [indexOpen, setIndexOpen] = useState(false)
   const [quietMode, setQuietMode] = useState(false)
@@ -84,7 +88,7 @@ function PortfolioShell() {
     </aside>
 
     <div className="content-column">
-      <header className="topbar"><span>{profile.shortName} / Digital workbench</span><div><button className="mobile-nav-toggle" onClick={() => setMobileNavOpen((open) => !open)} aria-expanded={mobileNavOpen} aria-controls="primary-navigation" aria-label={mobileNavOpen ? 'Close navigation' : 'Open navigation'}>{mobileNavOpen ? 'Close' : 'Menu'}</button><div className="topbar-actions"><button className="theme-toggle" onClick={() => setDarkMode((mode) => !mode)} aria-pressed={darkMode} aria-label={`Switch to ${darkMode ? 'light' : 'dark'} mode`} title={`Switch to ${darkMode ? 'light' : 'dark'} mode`}><ThemeIcon darkMode={darkMode} /></button><button className="quiet-toggle" onClick={() => setQuietMode((mode) => !mode)} aria-pressed={quietMode} aria-label={`${quietMode ? 'Enable' : 'Disable'} motion`}>{quietMode ? 'Motion: low' : 'Motion: on'}</button><button ref={indexButtonRef} className="index-button" onClick={() => setIndexOpen(true)} aria-label="Open quick index" title="Open quick index"><span className="index-label">Quick index</span><span className="index-icon" aria-hidden="true"><IndexIcon /></span><kbd>Ctrl K</kbd></button></div></div></header>
+      <header className="topbar"><span>{profile.shortName} / Digital workbench</span><div><button className="mobile-menu-toggle" onClick={() => setMobileNavOpen((open) => !open)} aria-expanded={mobileNavOpen} aria-controls="primary-navigation" aria-label={mobileNavOpen ? 'Close navigation' : 'Open navigation'} title={mobileNavOpen ? 'Close navigation' : 'Open navigation'}><MobileMenuIcon open={mobileNavOpen} /></button><div className="topbar-actions"><button className="theme-toggle" onClick={() => setDarkMode((mode) => !mode)} aria-pressed={darkMode} aria-label={`Switch to ${darkMode ? 'light' : 'dark'} mode`} title={`Switch to ${darkMode ? 'light' : 'dark'} mode`}><ThemeIcon darkMode={darkMode} /></button><button className="quiet-toggle" onClick={() => setQuietMode((mode) => !mode)} aria-pressed={quietMode} aria-label={`${quietMode ? 'Enable' : 'Disable'} motion`}>{quietMode ? 'Motion: low' : 'Motion: on'}</button><button ref={indexButtonRef} className="index-button" onClick={() => setIndexOpen(true)} aria-label="Open quick index" title="Open quick index"><span className="index-label">Quick index</span><span className="index-icon" aria-hidden="true"><IndexIcon /></span><kbd>Ctrl K</kbd></button></div></div></header>
       <main ref={mainRef} id="main-content" tabIndex="-1"><Routes><Route path="/" element={<HomePage />} /><Route path="/about" element={<AboutPage />} /><Route path="/work" element={<WorkPage />} /><Route path="/stack" element={<StackPage />} /><Route path="/contact" element={<ContactPage />} /><Route path="*" element={<NotFoundPage />} /></Routes></main>
       <footer className="site-footer"><span>Built with React, Express, and Resend</span><span>© 2026 {profile.shortName}</span></footer>
     </div>
