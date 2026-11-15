@@ -91,6 +91,8 @@ button { border: 0; cursor: pointer; }
 .topbar > div { display: flex; align-items: center; gap: clamp(.65rem, 1.5vw, 1.3rem); }
 .mobile-nav-toggle { display: none; min-height: 2.75rem; background: transparent; color: var(--muted); font: .75rem 'JetBrains Mono', monospace; letter-spacing: .02em; }
 .quiet-toggle, .theme-toggle, .index-button { min-height: 2.75rem; background: transparent; color: var(--muted); font: .75rem 'JetBrains Mono', monospace; letter-spacing: .02em; text-transform: none; }
+.theme-toggle { width: 2.75rem; min-width: 2.75rem; display: inline-grid; place-items: center; padding: 0; }
+.theme-icon { width: 1.25rem; height: 1.25rem; fill: none; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1.6; }
 .quiet-toggle:hover, .quiet-toggle:focus-visible, .theme-toggle:hover, .theme-toggle:focus-visible { color: var(--ink); }
 .index-button { display: flex; align-items: center; gap: .75rem; color: var(--ink); }
 .index-button kbd { border: 1px solid var(--line); padding: .35rem .5rem; color: var(--muted); font: inherit; }
