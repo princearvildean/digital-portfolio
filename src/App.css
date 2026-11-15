@@ -318,7 +318,7 @@ button:focus, a:focus, input:focus, textarea:focus { outline: 3px solid var(--fo
   .topbar > span { display: none; }
   .topbar > div { width: 100%; margin-left: 0; justify-content: flex-start; gap: .65rem; }
   .topbar button { font-size: .64rem; }
-  .mobile-nav-toggle { display: inline-flex; flex: 1 1 auto; min-width: 7rem; min-height: 3.25rem; justify-content: space-between; padding: 0 1rem; border: 1px solid var(--line); color: var(--ink); }
+  .mobile-nav-toggle { display: inline-flex; flex: 0 1 6.25rem; width: 6.25rem; min-width: 5.75rem; min-height: 3.25rem; align-items: center; justify-content: center; padding: 0 .8rem; border: 1px solid var(--line); color: var(--ink); font-size: .72rem; line-height: 1; }
   .quiet-toggle { min-width: 4.6rem; padding: 0 .25rem; }
   .theme-toggle, .index-button { flex: 0 0 2.75rem; }
   .index-button { width: 2.75rem; min-width: 2.75rem; justify-content: center; padding: 0; }
