@@ -31,7 +31,13 @@ button { border: 0; cursor: pointer; }
   color: var(--ink);
 }
 
-.theme-dark .site-rail { background: #080a09; }
+.theme-dark .site-rail { background: #080a09; border-right: 1px solid #2e362f; }
+.theme-dark .rail-nav a { color: #d7e0d5; }
+.theme-dark .rail-nav a.active { color: #10140d; }
+.theme-dark .rail-nav a:hover, .theme-dark .rail-nav a:focus-visible { color: var(--acid); }
+.theme-dark .rail-bottom { color: #d7e0d5; }
+.theme-dark .site-footer { color: #d7e0d5; border-top-color: #505a51; }
+.theme-dark .topbar { color: #cbd6ca; }
 .theme-dark .brand-mark { color: var(--ink); }
 .theme-dark .brand-mark span { border-color: var(--ink); }
 .theme-dark .about-section { background: #080a09; }

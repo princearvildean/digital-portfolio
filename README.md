@@ -1,6 +1,6 @@
 # Personal Portfolio
 
-An interactive personal portfolio for Prince Arvildean B. Seguros, built with React, Vite, Tailwind CSS, Express, and PostgreSQL.
+An interactive personal portfolio for Prince Arvildean B. Seguros, built with React, Vite, Tailwind CSS, Express, and Resend. PostgreSQL support is optional and is not required by the deployed portfolio.
 
 ## Frontend
 

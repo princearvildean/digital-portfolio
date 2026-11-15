@@ -10,7 +10,7 @@ export const profile = {
   roles: 'Web Development / IT Support',
   roleSummary: 'web development or IT support',
   preferredLocation: 'Makati City / Metro Manila',
-  bio: 'Information Technology student graduating in 2027, building practical web products with React, JavaScript, Tailwind CSS, Express.js, and PostgreSQL. I enjoy turning real workflows into clear, dependable interfaces and I am looking for a web development or IT support internship where I can learn quickly and contribute carefully.',
+  bio: 'Information Technology student graduating in 2027, building practical web products with React, JavaScript, Tailwind CSS, and Express.js. I am building fluency in PostgreSQL while turning real workflows into clear, dependable interfaces, and I am looking for a web development or IT support internship where I can learn quickly and contribute carefully.',
   links: { github: 'https://github.com/princearvildean', linkedin: 'https://www.linkedin.com/in/prince-arvildean-seguros-a75a253b6/' },
 }
 

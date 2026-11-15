@@ -76,7 +76,7 @@ function PortfolioShell() {
     <div className="content-column">
       <header className="topbar"><span>{profile.shortName.toUpperCase()} / DIGITAL WORKBENCH</span><div><button className="theme-toggle" onClick={() => setDarkMode((mode) => !mode)} aria-pressed={darkMode} aria-label={`Switch to ${darkMode ? 'light' : 'dark'} mode`}>{darkMode ? 'LIGHT MODE' : 'DARK MODE'}</button><button className="quiet-toggle" onClick={() => setQuietMode((mode) => !mode)} aria-pressed={quietMode} aria-label={`${quietMode ? 'Enable' : 'Disable'} motion`}>{quietMode ? 'MOTION: LOW' : 'MOTION: ON'}</button><button ref={indexButtonRef} className="index-button" onClick={() => setIndexOpen(true)} aria-label="Open quick index"><span>QUICK INDEX</span><kbd>CTRL K</kbd></button></div></header>
       <main ref={mainRef} id="main-content" tabIndex="-1"><Routes><Route path="/" element={<HomePage />} /><Route path="/about" element={<AboutPage />} /><Route path="/work" element={<WorkPage />} /><Route path="/stack" element={<StackPage />} /><Route path="/contact" element={<ContactPage />} /><Route path="*" element={<NotFoundPage />} /></Routes></main>
-      <footer className="site-footer"><span>BUILT WITH INTENTION / REACT + EXPRESS + POSTGRESQL</span><span>© 2026 {profile.shortName.toUpperCase()}</span></footer>
+      <footer className="site-footer"><span>BUILT WITH INTENTION / REACT + EXPRESS + RESEND</span><span>© 2026 {profile.shortName.toUpperCase()}</span></footer>
     </div>
 
     {indexOpen && <QuickIndex sections={sections} onJump={jumpTo} onClose={() => setIndexOpen(false)} />}
