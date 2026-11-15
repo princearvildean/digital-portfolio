@@ -11,9 +11,9 @@ h1 em, h2 em { color: var(--blue); font-style: italic; }
 .hero-copy strong { color: var(--orange); }
 .profile-band { background: var(--ink); color: var(--paper); }
 .profile-grid { display: grid; grid-template-columns: 1.25fr 1fr; gap: 5rem 8rem; padding-top: 5rem; padding-bottom: 6rem; }
-.portrait-frame { grid-row: span 2; width: min(100%, 30rem); min-height: 36rem; margin: 0; background: #cbc9c0; position: relative; display: grid; place-items: center; box-shadow: 1rem 1rem 0 var(--blue); outline: none; transition: transform .35s cubic-bezier(.2,.8,.2,1), box-shadow .35s ease; }
+.portrait-frame { grid-row: span 2; width: min(100%, 23rem); min-height: 29rem; margin: 0; background: #cbc9c0; position: relative; display: grid; place-items: center; box-shadow: 1rem 1rem 0 var(--blue); outline: none; transition: transform .35s cubic-bezier(.2,.8,.2,1), box-shadow .35s ease; }
 .portrait-frame::after { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(36,80,244,.08), transparent 55%, rgba(255,87,36,.18)); pointer-events: none; transition: opacity .35s ease; }
-.profile-photo { width: 100%; height: 100%; min-height: 36rem; display: block; object-fit: cover; filter: grayscale(1) contrast(1.05); transition: transform .5s cubic-bezier(.2,.8,.2,1), filter .5s ease; }
+.profile-photo { width: 100%; height: 100%; min-height: 29rem; display: block; object-fit: cover; filter: grayscale(1) contrast(1.05); transition: transform .5s cubic-bezier(.2,.8,.2,1), filter .5s ease; }
 .portrait-frame:hover, .portrait-frame:focus-visible { transform: translate(-.35rem, -.35rem) rotate(-1.2deg); box-shadow: 1.45rem 1.45rem 0 var(--blue); }
 .portrait-frame:hover .profile-photo, .portrait-frame:focus-visible .profile-photo { transform: scale(1.045); filter: grayscale(0) saturate(1.05) contrast(1.02); }
 .portrait-frame:hover::after, .portrait-frame:focus-visible::after { opacity: 0; }
@@ -69,4 +69,4 @@ h1 em, h2 em { color: var(--blue); font-style: italic; }
 .contact h2 { font-size: clamp(3.5rem, 8vw, 9rem); margin: 3rem 0; }
 .contact-inner > p:not(.eyebrow) { max-width: 48rem; font-size: 1.35rem; line-height: 1.5; }
 .contact-link { border-bottom: 1px solid var(--ink); align-self: flex-start; margin-top: 4rem; padding-bottom: 1rem; }
-@media (max-width: 800px) { .page-shell { width: min(100% - 2.5rem, 88rem); } .availability { margin-bottom: 5rem; } .hero-copy { margin-top: 5rem; } .profile-grid, .section-heading { grid-template-columns: 1fr; gap: 3rem; } .portrait-frame { width: min(100%, 24rem); min-height: 28rem; grid-row: auto; } .profile-photo { min-height: 28rem; } .profile-intro { padding-top: 0; } .profile-details, .fact-grid { grid-column: auto; } .project-card { padding: 1.2rem; } .project-visual { height: 20rem; } .browser-window { width: 88%; } .project-copy { grid-template-columns: 1fr; } .project-copy h3, .project-copy a { grid-column: auto; } }
+@media (max-width: 800px) { .page-shell { width: min(100% - 2.5rem, 88rem); } .availability { margin-bottom: 5rem; } .hero-copy { margin-top: 5rem; } .profile-grid, .section-heading { grid-template-columns: 1fr; gap: 3rem; } .portrait-frame { width: min(100%, 20rem); min-height: 24rem; grid-row: auto; } .profile-photo { min-height: 24rem; } .profile-intro { padding-top: 0; } .profile-details, .fact-grid { grid-column: auto; } .project-card { padding: 1.2rem; } .project-visual { height: 20rem; } .browser-window { width: 88%; } .project-copy { grid-template-columns: 1fr; } .project-copy h3, .project-copy a { grid-column: auto; } }
