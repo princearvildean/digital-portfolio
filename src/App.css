@@ -1,0 +1,67 @@
+.page-shell { width: min(100% - 7.5rem, 88rem); margin: 0 auto; }
+.eyebrow, .availability, .tags, .contact-link, .skills-tabs, .terminal-line, .fact-grid span, .skill-row small, .skill-row span { font-family: 'DM Mono', monospace; letter-spacing: .08em; font-size: .72rem; }
+.hero { min-height: 100vh; padding-top: 4.5rem; display: flex; flex-direction: column; justify-content: center; }
+.availability { display: flex; align-items: center; gap: .65rem; align-self: flex-start; margin-bottom: 8rem; }
+.availability span { width: .65rem; height: .65rem; background: var(--orange); border-radius: 50%; }
+h1, h2, h3, p { margin: 0; }
+h1, h2, h3 { font-weight: 700; letter-spacing: -.07em; line-height: .9; }
+h1 { max-width: 70rem; font-size: clamp(4rem, 11vw, 10.5rem); }
+h1 em, h2 em { color: var(--blue); font-style: italic; }
+.hero-copy { max-width: 52rem; margin-top: 8rem; font-size: clamp(1.05rem, 1.8vw, 1.5rem); line-height: 1.55; }
+.hero-copy strong { color: var(--orange); }
+.profile-band { background: var(--ink); color: var(--paper); }
+.profile-grid { display: grid; grid-template-columns: 1.25fr 1fr; gap: 5rem 8rem; padding-top: 5rem; padding-bottom: 6rem; }
+.portrait-frame { grid-row: span 2; min-height: 48rem; background: #cbc9c0; position: relative; display: grid; place-items: center; box-shadow: 1.2rem 1.2rem 0 var(--blue); }
+.portrait-placeholder { color: var(--ink); font-weight: 700; text-align: center; font-size: clamp(3rem, 8vw, 7rem); line-height: .8; letter-spacing: -.08em; opacity: .28; }
+.sticker { position: absolute; top: 12%; right: -3%; background: var(--lime); color: var(--ink); padding: .8rem 1.2rem; transform: rotate(5deg); font: .72rem 'DM Mono', monospace; }
+.profile-intro { align-self: end; padding-top: 10rem; }
+.lime { color: var(--lime); }
+.profile-intro h2 { font-size: clamp(3rem, 6vw, 6.5rem); margin-top: 1rem; }
+.profile-intro h2 em { color: var(--orange); }
+.profile-details { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; border-bottom: 1px solid #45443e; padding-bottom: 3rem; color: #b9b7af; font-size: 1.1rem; line-height: 1.6; }
+.fact-grid { grid-column: 2; display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+.fact-grid div { display: grid; gap: .8rem; }
+.fact-grid span { color: #75736d; }
+.fact-grid strong { font-size: 1rem; font-weight: 400; }
+.projects { padding-top: 10rem; padding-bottom: 10rem; }
+.section-heading { display: grid; grid-template-columns: 1.2fr 1fr; align-items: end; gap: 3rem; margin-bottom: 5rem; }
+.section-heading h2, .toolbox h2 { font-size: clamp(3.5rem, 7vw, 7.5rem); margin-top: 2rem; }
+.section-heading > p { font-size: 1.3rem; max-width: 22rem; line-height: 1.4; padding-bottom: .5rem; }
+.project-list { display: grid; gap: 5rem; }
+.project-card { padding: 3rem; }
+.project-card.blue { background: var(--blue); color: white; }
+.project-card.orange { background: var(--orange); color: var(--ink); }
+.project-visual { height: 32rem; position: relative; display: grid; place-items: center; }
+.browser-window { width: 82%; height: 80%; background: var(--paper); color: var(--ink); border: 1px solid var(--ink); transform: rotate(-2deg); box-shadow: .9rem .9rem 0 var(--ink); display: grid; grid-template-columns: 22% 1fr; grid-template-rows: 2.5rem 1fr; }
+.browser-bar { grid-column: span 2; border-bottom: 1px solid var(--ink); display: flex; gap: .5rem; align-items: center; padding-left: .8rem; }
+.browser-bar i { width: .6rem; height: .6rem; border: 1px solid var(--ink); border-radius: 50%; }
+.browser-sidebar { border-right: 1px solid var(--ink); }
+.browser-content { padding: 1.5rem; display: grid; grid-template-columns: 1.2fr .7fr; grid-template-rows: 1fr .8fr; gap: .8rem; }
+.browser-content span { border: 1px solid var(--ink); background: #dbd9d0; }
+.browser-content span:first-child { grid-column: span 2; background: var(--lime); }
+.browser-content span:nth-child(2) { background: var(--orange); }
+.visual-note { position: absolute; right: 5%; bottom: 6%; background: var(--paper); color: var(--ink); padding: .8rem 1rem; transform: rotate(5deg); font: .7rem 'DM Mono', monospace; }
+.project-copy { border-top: 1px solid currentColor; padding-top: 2rem; display: grid; grid-template-columns: 1fr 1.4fr; gap: 1.5rem 3rem; }
+.project-copy h3 { font-size: clamp(3.5rem, 7vw, 7rem); grid-column: span 2; }
+.project-copy > p:not(.eyebrow) { font-size: 1.2rem; line-height: 1.5; max-width: 38rem; }
+.tags { display: flex; flex-wrap: wrap; gap: .6rem; align-items: start; }
+.tags span { border: 1px solid currentColor; padding: .6rem .8rem; }
+.project-copy a { grid-column: span 2; border-bottom: 1px solid currentColor; padding: 1rem 0; font: .75rem 'DM Mono', monospace; letter-spacing: .08em; }
+.project-copy a span, .contact-link span { font-size: 1.4rem; margin-left: .5rem; }
+.toolbox { padding-bottom: 11rem; }
+.toolbox-copy { max-width: 40rem; font-size: 1.25rem; line-height: 1.5; margin: 4rem 0; }
+.skills-panel { background: var(--ink); color: var(--paper); }
+.skills-tabs { display: grid; grid-template-columns: repeat(3, 1fr); border-bottom: 1px solid #45443e; }
+.skills-tabs span { padding: 1.5rem; text-align: center; border-right: 1px solid #45443e; color: #77756f; }
+.skills-tabs span.active { background: var(--lime); color: var(--ink); }
+.terminal-line { color: var(--lime); padding: 2rem; }
+.skills-list { padding: 0 2rem 2rem; }
+.skill-row { display: grid; grid-template-columns: 3rem 1fr auto; gap: 1rem; align-items: center; padding: 1.7rem 0; border-bottom: 1px solid #45443e; }
+.skill-row strong { font-size: 1.4rem; font-weight: 400; }
+.skill-row small, .skill-row span { color: #77756f; }
+.contact { background: var(--orange); }
+.contact-inner { min-height: 70vh; display: flex; flex-direction: column; justify-content: center; }
+.contact h2 { font-size: clamp(3.5rem, 8vw, 9rem); margin: 3rem 0; }
+.contact-inner > p:not(.eyebrow) { max-width: 48rem; font-size: 1.35rem; line-height: 1.5; }
+.contact-link { border-bottom: 1px solid var(--ink); align-self: flex-start; margin-top: 4rem; padding-bottom: 1rem; }
+@media (max-width: 800px) { .page-shell { width: min(100% - 2.5rem, 88rem); } .availability { margin-bottom: 5rem; } .hero-copy { margin-top: 5rem; } .profile-grid, .section-heading { grid-template-columns: 1fr; gap: 3rem; } .portrait-frame { min-height: 28rem; grid-row: auto; } .profile-intro { padding-top: 0; } .profile-details, .fact-grid { grid-column: auto; } .project-card { padding: 1.2rem; } .project-visual { height: 20rem; } .browser-window { width: 88%; } .project-copy { grid-template-columns: 1fr; } .project-copy h3, .project-copy a { grid-column: auto; } }
